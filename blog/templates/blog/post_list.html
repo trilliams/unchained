@@ -16,6 +16,13 @@
         <div>
             <p>post one</p>
         </div>
+        {% for post in posts %}
+            <div>
+                <p>{{ post.published_date }}</p>
+                <h2><a href=''>{{ post.title }}</a></h2>
+                <p> {{ post.text|linebreaks }}</p>
+            </div>
+        {% endfor %}
         <div>
             <p>post two</p>
         </div>
@@ -24,3 +31,5 @@
         </div>
     </body>
 </html>
+
+<!-- Post.objects.order_by('-created_date') -->
