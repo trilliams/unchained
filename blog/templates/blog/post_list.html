@@ -1,35 +1,15 @@
-<html>
-    <head>
-        <title>TRISTAN LIVES</title>
-    </head>
-    <body>
-        <h1> SUP </h1>
-        <h2>bruh</h2>
-        <p>go to this website: <a href=''>internet</a></p>
-        <p>We only live to drop the <em>bass</em></p>
-        <ul>
-            <li>this</li>
-            <li>is</li>
-            <li>a</li>
-            <li>list</li>
-        </ul>
-        <div>
-            <p>post one</p>
-        </div>
-        {% for post in posts %}
-            <div>
-                <p>{{ post.published_date }}</p>
-                <h2><a href=''>{{ post.title }}</a></h2>
-                <p> {{ post.text|linebreaks }}</p>
-            </div>
-        {% endfor %}
-        <div>
-            <p>post two</p>
-        </div>
-        <div>
-            <p>post three</p>
-        </div>
-    </body>
-</html>
+{% extends 'blog/base.html' %}
 
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                <p>{{ post.published_date }}</p>
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p> {{ post.text|linebreaks }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
 <!-- Post.objects.order_by('-created_date') -->
